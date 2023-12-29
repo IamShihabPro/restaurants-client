@@ -15,7 +15,7 @@ const Footer = () => {
                     <p>Chittagong, Bahaddarhat</p>
                     <p>Bangladesh</p>
                   </div>
-                  <div>
+                  <div className='text-start'>
                     <h1>Phone: +8801850411622</h1>
                     <h1>Email: mshihab.pro@gmail.com</h1>
                   </div>
