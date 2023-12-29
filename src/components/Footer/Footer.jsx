@@ -16,8 +16,8 @@ const Footer = () => {
                     <p>Bangladesh</p>
                   </div>
                   <div>
-                    <h1>Phone: +1 5589 55488 55</h1>
-                    <h1>Email: info@example.com</h1>
+                    <h1>Phone: +8801850411622</h1>
+                    <h1>Email: mshihab.pro@gmail.com</h1>
                   </div>
 
                   <div className="flex space-x-4">
