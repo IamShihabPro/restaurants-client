@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  
+.slower {
+    animation: spin 30s linear infinite; /* Adjust the '3s' value to make it slower or faster */
+}
