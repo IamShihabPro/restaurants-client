@@ -4,7 +4,7 @@ import table from '../../assets/infoApp/table.jpg'
 const BookingForm = () => {
   return (
     <div>
-      <h1 className='text-center mx-auto text-5xl mt-10 mb-4 font-serif font-bold'>Reservation</h1>
+      <h1 className='text-center mx-auto text-3xl mt-10 mb-4 font-serif font-bold'>Reservation</h1>
         <div className="container mx-auto flex flex-col lg:flex-row min-h-screen font-serif">
           
       {/* Left side: Booking Form */}
