@@ -52,6 +52,7 @@ const RestaurantMenu = () => {
                       <h3 className="text-lg font-semibold mb-2">{menu.name}</h3>
                       <p className="font-semibold mt-2">${menu.price.toFixed(2)}</p>
                     </div>
+                    <button className='bg-orange-600 px-4 py-2 rounded-md text-white font-serif'>Add to cart</button>
                   </div>
                 </div>
               ))}
