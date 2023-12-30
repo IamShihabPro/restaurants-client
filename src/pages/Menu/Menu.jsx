@@ -72,14 +72,14 @@ const Menu = () => {
             </div>
 
             <div className="pagination flex gap-2 mt-10 text-center items-center justify-center">
-                <button className='rounded-md bg-orange-600 text-white px-4 py-2' onClick={handlePrevPage} disabled={currentPage === 1}>
+                <button className='rounded-md bg-green-600 text-white px-4 py-2' onClick={handlePrevPage} disabled={currentPage === 1}>
                     Prev
                 </button>
                 {Array.from({ length: totalPages }).map((_, index) => (
                     <button
                     key={index}
                     onClick={() => setCurrentPage(index + 1)}
-                    className={currentPage === index + 1 ? 'active rounded-md bg-orange-600 text-white px-4 py-2' : 'rounded-md bg-gray-800 text-white px-4 py-2'}
+                    className={currentPage === index + 1 ? 'active rounded-md bg-orange-600 text-white px-4 py-2' : 'rounded-md bg-orange-400 text-white px-4 py-2'}
                     >
                     {index + 1}
                     </button>
@@ -90,7 +90,7 @@ const Menu = () => {
                 {totalPages > 5 && currentPage < totalPages - 1 && (
                     <button onClick={() => setCurrentPage(totalPages)}>{totalPages}</button>
                 )}
-                <button className='rounded-md bg-orange-600 text-white px-4 py-2' onClick={handleNextPage} disabled={currentPage === totalPages}>
+                <button className='rounded-md bg-green-600 text-white px-4 py-2' onClick={handleNextPage} disabled={currentPage === totalPages}>
                     Next
                 </button>
             </div>
