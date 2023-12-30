@@ -43,9 +43,9 @@ const Nabvbar = () => {
                     <div className="ml-10 flex items-baseline space-x-4">
                         {
                             navItems.map(({id, link, title})=> (
-                                <a  key={id} href="" className="text-gray-800 hover:text-orange-500 hover:scale-105 px-3 py-2 rounded-md text-lg font-serif font-bold">
-                                <Link to={link} >{title}</Link>
-                                </a>
+                                <Link  key={id} to={link} className="text-gray-800 hover:text-orange-500 hover:scale-105 px-3 py-2 rounded-md text-lg font-serif font-bold">
+                                {title}
+                                </Link>
                             ))
                         }
 
@@ -66,8 +66,8 @@ const Nabvbar = () => {
 
                 <div className='hidden md:block lg:block '>
                    <div className='flex gap-2'>
-                        <a className='bg-orange-500 px-4 py-2 rounded-md text-white flex items-center justify-center w-24 font-medium' href=""> Order  <FaShoppingCart className='w-14'></FaShoppingCart> </a>
-                        <a className='bg-orange-500 px-4 py-2 rounded-md text-white flex items-center justify-center w-24 font-medium' href=""> Login  <FaUser className='w-14'></FaUser> </a>
+                        <Link className='bg-orange-500 px-4 py-2 rounded-md text-white flex items-center justify-center w-24 font-medium' href=""> Order  <FaShoppingCart className='w-14'></FaShoppingCart> </Link>
+                        <Link className='bg-orange-500 px-4 py-2 rounded-md text-white flex items-center justify-center w-24 font-medium' href=""> Login  <FaUser className='w-14'></FaUser> </Link>
                 
                    </div>
                 </div>
@@ -79,14 +79,14 @@ const Nabvbar = () => {
                 <div>
                     {
                         navItems.map(({id, link, title})=>(
-                            <a key={id} href="" className="block text-gray-900 px-3 py-2 rounded-md text-base font-bold font-serif">
-                            <Link to={link} >{title}</Link>
-                            </a>
+                            <Link key={id} to={link} className="block text-gray-900 px-3 py-2 rounded-md text-base font-bold font-serif">
+                            {title}
+                            </Link>
                         ))
                     }
                      <div className='block md:hidden lg:hidden my-4'>
-                        <a className='bg-orange-500 px-4 py-2 rounded-md text-white flex items-center justify-center w-28 my-2' href=""> Order  <FaShoppingCart className='w-14'></FaShoppingCart> </a>
-                        <a className='bg-orange-500 px-4 py-2 rounded-md text-white flex items-center justify-center w-28 my-2' href=""> Login  <FaUser className='w-14'></FaUser> </a>
+                        <Link className='bg-orange-500 px-4 py-2 rounded-md text-white flex items-center justify-center w-28 my-2' href=""> Order  <FaShoppingCart className='w-14'></FaShoppingCart> </Link>
+                        <Link className='bg-orange-500 px-4 py-2 rounded-md text-white flex items-center justify-center w-28 my-2' href=""> Login  <FaUser className='w-14'></FaUser> </Link>
                      </div>
                 </div>
                
