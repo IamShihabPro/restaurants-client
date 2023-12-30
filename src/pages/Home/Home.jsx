@@ -6,6 +6,7 @@ import InfoApp from '../../components/InfoApp/InfoApp';
 import BookingForm from '../../components/BookingForm/BookingForm';
 import Gallery from '../../components/Gallery/Gallery';
 import Footer from '../../components/Footer/Footer';
+import RestaurantMenu from '../../components/RestaurantMenu/RestaurantMenu';
 
 const Home = () => {
     return (
@@ -13,6 +14,7 @@ const Home = () => {
             <Hero></Hero>
             <Features></Features>
             <Paralla></Paralla>
+            <RestaurantMenu></RestaurantMenu>
             <InfoApp></InfoApp>
             <BookingForm></BookingForm>
             <Gallery></Gallery>
