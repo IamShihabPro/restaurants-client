@@ -5,18 +5,16 @@ const Cards = ({menu}) => {
     const {_id, name, image, recipe, price, category, } = menu
     return (
         <div className='container'>
-            <div className='col-span-1 cursor-pointer group bg-white drop-shadow-md rounded-md p-2 my-2 mx-3'>
-                <div className='flex flex-col gap-2 w-full'>
-                    <div className=' aspect-square w-full relative overflow-hidden rounded-md'>
-                        <img className=' object-cover h-full w-full group-hover:scale-110 transition'src={image}alt='Cloths'/>               
+            <div  className="bg-white text-black p-4 group rounded shadow mb-4">
+                  <img src={image} className="w-full h-40 object-cover mb-4 group-hover:scale-110 transition duration-300" alt={name} />
+                  <p className='text-gray-500'>{recipe}</p>
+                  <div className="flex justify-between items-center">
+                    <div className='mt-2'>
+                      <h3 className="text-lg font-semibold mb-2">{name}</h3>
+                      <p className="font-semibold mt-2">${price.toFixed(2)}</p>
                     </div>
-                
-                    <div className='font-semibold text-lg'>{name}</div>
-
-                    <div className='font-semibold'>$ {price}</div>
-                    
-
-                </div>
+                    <button className='bg-orange-600 px-4 py-2 rounded-md text-white font-serif'>Add to cart</button>
+                  </div>
             </div>
         </div>
     );

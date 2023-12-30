@@ -44,8 +44,8 @@ const RestaurantMenu = () => {
           <TabPanel key={i}>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-8 text-white font-serif">
               {filterMenu.slice(0,12).map((menu, index) => (
-                <div key={index} className="bg-white text-black p-4 rounded shadow mb-4">
-                  <img src={menu.image} className="w-full h-40 object-cover mb-4" alt={menu.name} />
+                <div key={index} className="bg-white text-black p-4 group rounded shadow mb-4">
+                  <img src={menu.image} className="w-full h-40 object-cover mb-4 group-hover:scale-110 transition" alt={menu.name} />
                   <p className='text-gray-500'>{menu.recipe}</p>
                   <div className="flex justify-between items-center">
                     <div>

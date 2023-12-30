@@ -52,9 +52,9 @@ const Menu = () => {
         console.log(visibleProducts);
 
     return (
-        <div className='container mx-auto px-4 mt-20 mb-10'>
-             <div className='mb-8 flex justify-center space-x-4 mt-20'>
-                <button onClick={()=> handleCategory('All')} className={`px-4 py-2 rounded-lg uppercase ${selectedCategory === 'All' ? 'bg-orange-500 text-white' : 'bg-gray-800 text-white'}`}>All</button>
+        <div className='container mx-auto px-4 mt-24 mb-10'>
+             <div className='mb-8 grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-2 space-x-4 mt-20'>
+                <button onClick={()=> handleCategory('All')} className={`px-2 py-2 rounded-lg uppercase ${selectedCategory === 'All' ? 'bg-orange-500 text-white' : 'bg-gray-800 text-white'}`}>All</button>
                 {
                     uniqueArr.map(category => (
                         <button key={category} onClick={()=> handleCategory(category)} className={`px-4 py-2 rounded-lg uppercase ${selectedCategory === `${category}` ? 'bg-orange-500 text-white' : 'bg-gray-800 text-white'}`}>{category}</button>
