@@ -30,7 +30,7 @@ const RestaurantMenu = () => {
             <Tab
               key={i}
               onClick={() => setSelectedCategory(data)}
-              className={`cursor-pointer text-md bg-orange-600 text-white px-4 py-2 rounded-md font-semibold uppercase ${
+              className={`cursor-pointer text-md bg-orange-600 text-white px-2 py-2 rounded-md font-semibold uppercase ${
                 selectedCategory === data && 'border-b-2 border-blue-500'
               }`}
             >
@@ -43,7 +43,7 @@ const RestaurantMenu = () => {
         {uniqueArr.map((data, i) => (
           <TabPanel key={i}>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-8 text-white font-serif">
-              {filterMenu.slice(0,12).map((menu, index) => (
+              {filterMenu.slice(0,9).map((menu, index) => (
                 <div key={index} className="bg-white text-black p-4 group rounded shadow mb-4">
                   <img src={menu.image} className="w-full h-40 object-cover mb-4 group-hover:scale-110 transition" alt={menu.name} />
                   <p className='text-gray-500'>{menu.recipe}</p>
@@ -60,6 +60,9 @@ const RestaurantMenu = () => {
           </TabPanel>
         ))}
       </Tabs>
+      <div className='flex justify-center items-center mt-4'>
+        <button className='bg-orange-600 text-white px-4 py-2 rounded-md w-full sm:w-1/6 md:w-1/6 lg:w-1/6'>View all</button>
+      </div>
     </div>
   );
 };
