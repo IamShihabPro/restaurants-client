@@ -67,7 +67,7 @@ const Nabvbar = () => {
                 <div className='hidden md:block lg:block '>
                    <div className='flex gap-2'>
                         <Link className='bg-orange-500 px-4 py-2 rounded-md text-white flex items-center justify-center w-24 font-medium' href=""> Order  <FaShoppingCart className='w-14'></FaShoppingCart> </Link>
-                        <Link className='bg-orange-500 px-4 py-2 rounded-md text-white flex items-center justify-center w-24 font-medium' href=""> Login  <FaUser className='w-14'></FaUser> </Link>
+                        <Link to='/login' className='bg-orange-500 px-4 py-2 rounded-md text-white flex items-center justify-center w-24 font-medium' href=""> Login  <FaUser className='w-14'></FaUser> </Link>
                 
                    </div>
                 </div>

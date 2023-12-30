@@ -8,7 +8,7 @@ const RestaurantMenu = () => {
   const [selectedCategory, setSelectedCategory] = useState('All');
 
   useEffect(() => {
-    fetch('/menu.json') // Adjust the path to your JSON file
+    fetch(`${import.meta.env.VITE_API_URL}/menu`)
       .then((res) => res.json())
       .then((data) => {
         setCategory(data);
@@ -45,7 +45,7 @@ const RestaurantMenu = () => {
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-8 text-white font-serif">
               {filterMenu.slice(0,9).map((menu, index) => (
                 <div key={index} className="bg-white text-black p-4 group rounded shadow mb-4">
-                  <img src={menu.image} className="w-full h-40 object-cover mb-4 group-hover:scale-110 transition" alt={menu.name} />
+                  <img src={menu.image} className="w-full h-40 object-cover mb-4 group-hover:scale-110 transition duration-300" alt={menu.name} />
                   <p className='text-gray-500'>{menu.recipe}</p>
                   <div className="flex justify-between items-center">
                     <div>
