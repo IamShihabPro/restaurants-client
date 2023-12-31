@@ -1,5 +1,6 @@
 // src/components/RestaurantMenu.js
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 
@@ -61,7 +62,8 @@ const RestaurantMenu = () => {
         ))}
       </Tabs>
       <div className='flex justify-center items-center mt-4'>
-        <button className='bg-orange-600 text-white px-4 py-2 rounded-md w-full sm:w-1/6 md:w-1/6 lg:w-1/6'>View all</button>
+        
+        <Link to='/menu' className='bg-orange-600 text-white px-4 py-2 rounded-md w-full sm:w-1/6 md:w-1/6 lg:w-1/6 text-center'> <button className=''> View all </button> </Link>
       </div>
     </div>
   );
