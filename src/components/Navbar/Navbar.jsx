@@ -1,11 +1,13 @@
-import React, {  useState } from 'react';
+import React, {  useContext, useState } from 'react';
 import { FaBars, FaTimes, FaShoppingCart, FaUser } from 'react-icons/fa';
 import { ImSpoonKnife } from "react-icons/im";
 
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../Provider/AuthProvider';
 
 const Nabvbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const {user, logOut} = useContext(AuthContext)
 
 
   const navItems = [
@@ -29,6 +31,12 @@ const Nabvbar = () => {
   const toggleNavbar = () => {
     setIsOpen(!isOpen);
   };
+
+  const handleLogOut = () =>{
+    logOut()
+    .then(()=>{})
+    .catch(err => console.log(err) )
+  }
 
 
   return (
@@ -66,8 +74,13 @@ const Nabvbar = () => {
 
                 <div className='hidden md:block lg:block '>
                    <div className='flex gap-2'>
-                        <Link className='bg-orange-500 px-4 py-2 rounded-md text-white flex items-center justify-center w-24 font-medium' href=""> Order  <FaShoppingCart className='w-14'></FaShoppingCart> </Link>
-                        <Link to='/login' className='bg-orange-500 px-4 py-2 rounded-md text-white flex items-center justify-center w-24 font-medium' href=""> Login  <FaUser className='w-14'></FaUser> </Link>
+                        <Link className='bg-orange-500 px-4 py-2 rounded-md text-white flex items-center justify-center w-24 font-medium'> Order  <FaShoppingCart className='w-14'></FaShoppingCart> </Link>
+                        {
+                            user ? <Link onClick={handleLogOut} className='bg-orange-500 px-4 py-2 rounded-md text-white flex items-center justify-center w-24 font-medium'> Logout <FaUser className='w-14'></FaUser> </Link>
+                            : <Link to='/login' className='bg-orange-500 px-4 py-2 rounded-md text-white flex items-center justify-center w-24 font-medium'> Login <FaUser className='w-14'></FaUser> </Link>
+
+
+                        }
                 
                    </div>
                 </div>
@@ -85,8 +98,13 @@ const Nabvbar = () => {
                         ))
                     }
                      <div className='block md:hidden lg:hidden my-4'>
-                        <Link className='bg-orange-500 px-4 py-2 rounded-md text-white flex items-center justify-center w-28 my-2' href=""> Order  <FaShoppingCart className='w-14'></FaShoppingCart> </Link>
-                        <Link className='bg-orange-500 px-4 py-2 rounded-md text-white flex items-center justify-center w-28 my-2' href=""> Login  <FaUser className='w-14'></FaUser> </Link>
+                        <Link className='bg-orange-500 px-4 py-2 rounded-md text-white flex items-center justify-center w-28 my-2'> Order  <FaShoppingCart className='w-14'></FaShoppingCart> </Link>
+                        {
+                            user ? <Link className='bg-orange-500 px-4 py-2 rounded-md text-white flex items-center justify-center w-28 my-2'> Logout <FaUser className='w-14'></FaUser> </Link>
+                            : <Link to='/login' className='bg-orange-500 px-4 py-2 rounded-md text-white flex items-center justify-center w-28 my-2'> Login  <FaUser className='w-14'></FaUser> </Link>
+
+
+                        }
                      </div>
                 </div>
                

@@ -3,6 +3,7 @@ import {
   GoogleAuthProvider,
   getAuth,
   onAuthStateChanged,
+  signInWithPopup,
   signOut,
 } from "firebase/auth";
 import { app } from "../firebase/firebase.config";
@@ -16,9 +17,10 @@ const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
 
   const signInWithGoogle = () => {
-    setLoading(true);
-    return signInWithPopup(auth, googleProvider);
-  };
+    setLoading(true)
+    return signInWithPopup(auth, googleProvider)
+  }
+
 
   const logOut = () => {
     setLoading(true);
