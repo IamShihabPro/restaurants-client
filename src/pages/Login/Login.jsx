@@ -4,12 +4,15 @@ import facebookLogo from '../../assets/logo/2.png';
 import githubLogo from '../../assets/logo/3.png';
 import { AuthContext } from '../../Provider/AuthProvider';
 import { useLocation, useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
 const Login = () => {
-  const {signInWithGoogle} = useContext(AuthContext)
+  const {signInWithGoogle, user} = useContext(AuthContext)
   const navigate = useNavigate()
   const location = useLocation()
   const from = location.state?.from?.pathname || '/'
+
+  console.log(user);
 
   // google login
   const handleGoogleLogin = () =>{
@@ -25,6 +28,13 @@ const Login = () => {
               })
               .then(res => res.json())
               .then(data =>{
+                Swal.fire({
+                  position: "top-end",
+                  icon: "success",
+                  title: `login successfull`,
+                  showConfirmButton: false,
+                  timer: 2000
+                });
                 if(data.insertedId){
                   navigate(from, {replace: true})
                 }
