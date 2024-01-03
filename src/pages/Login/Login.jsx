@@ -12,8 +12,6 @@ const Login = () => {
   const location = useLocation()
   const from = location.state?.from?.pathname || '/'
 
-  console.log(user);
-
   // google login
   const handleGoogleLogin = () =>{
     signInWithGoogle()
@@ -31,7 +29,7 @@ const Login = () => {
                 Swal.fire({
                   position: "top-end",
                   icon: "success",
-                  title: `login successfull`,
+                  title: `${res.user.displayName} login successfull`,
                   showConfirmButton: false,
                   timer: 2000
                 });
