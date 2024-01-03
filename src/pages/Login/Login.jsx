@@ -3,7 +3,6 @@ import googleLogo from '../../assets/logo/1.png';
 import facebookLogo from '../../assets/logo/2.png';
 import githubLogo from '../../assets/logo/3.png';
 import { AuthContext } from '../../Provider/AuthProvider';
-import toast, { Toaster } from 'react-hot-toast';
 import { useLocation, useNavigate } from 'react-router-dom';
 
 const Login = () => {
@@ -27,7 +26,6 @@ const Login = () => {
               .then(res => res.json())
               .then(data =>{
                 if(data.insertedId){
-                  toast.success('Sign up successfull')
                   navigate(from, {replace: true})
                 }
               })
@@ -37,7 +35,7 @@ const Login = () => {
     .catch(err =>{
         setLoading(false)
         console.log(err.message);
-        toast.error(err.message)
+       
         
     })
 }
