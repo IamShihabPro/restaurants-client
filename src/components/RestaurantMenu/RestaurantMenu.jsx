@@ -1,12 +1,17 @@
 // src/components/RestaurantMenu.js
-import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useContext, useEffect, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
+import { AuthContext } from '../../Provider/AuthProvider';
+import Swal from 'sweetalert2';
 
 const RestaurantMenu = () => {
   const [category, setCategory] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState('All');
+  const navigate = useNavigate()
+
+  const {user} = useContext(AuthContext)
 
   useEffect(() => {
     fetch(`${import.meta.env.VITE_API_URL}/menu`)
@@ -21,6 +26,42 @@ const RestaurantMenu = () => {
   const filterMenu = category.filter(
     (menu) => selectedCategory === 'All' || menu.category === selectedCategory
   );
+
+  const handleAddToCart = (item) =>{
+    console.log(item);
+
+    if(user && user.email){
+        
+        fetch(`${import.meta.env.VITE_API_URL}/carts`)
+        .then(res => res.json())
+        .then(data =>{
+            if(data.insertedId){
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: 'Cart saved',
+                    showConfirmButton: false,
+                    timer: 1500
+                  })
+            }
+        })
+    }
+    else{
+        Swal.fire({
+            title: 'Please Login First',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Login Now'
+          }).then((result) => {
+            if (result.isConfirmed) {
+              navigate('/login')
+            }
+          })
+    }
+
+}
 
   return (
     <div className="container mx-auto p-4">
@@ -53,7 +94,7 @@ const RestaurantMenu = () => {
                       <h3 className="text-lg font-semibold mb-2">{menu.name}</h3>
                       <p className="font-semibold mt-2">${menu.price.toFixed(2)}</p>
                     </div>
-                    <button className='bg-orange-600 px-4 py-2 rounded-md text-white font-serif'>Add to cart</button>
+                    <button onClick={() => handleAddToCart(menu)} className='bg-orange-600 px-4 py-2 rounded-md text-white font-serif'>Add to cart</button>
                   </div>
                 </div>
               ))}
