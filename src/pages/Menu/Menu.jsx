@@ -1,9 +1,20 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import Cards from '../../components/Card/Cards';
+import Swal from 'sweetalert2';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../Provider/AuthProvider';
+import useCart from '../../hooks/useCart';
 
 const Menu = () => {
     const [category, setCategory] = useState([]);
     const [selectedCategory, setSelectedCategory] = useState('All');
+
+    const navigate = useNavigate()
+    const location = useLocation()
+
+    
+  const {user} = useContext(AuthContext)
+  const [cart, refetch] = useCart()
 
     useEffect(()=>{
         fetch(`${import.meta.env.VITE_API_URL}/menu`)
@@ -52,45 +63,49 @@ const Menu = () => {
         console.log(visibleProducts);
 
 
-        // const handleAddToCart = (item) =>{
-        //     console.log(item);
         
-        //     if(user){
-                
-        //         fetch(`${import.meta.env.VITE_API_URL}/carts`,{
-        //           method: 'POST',
-        //           headers:{'content-type': 'application/json'},
-        //           body: JSON.stringify(item)
-        //         })
-        //         .then(res => res.json())
-        //         .then(data =>{
-        //             if(data.insertedId){
-        //                 Swal.fire({
-        //                     position: 'top-end',
-        //                     icon: 'success',
-        //                     title: 'Cart saved',
-        //                     showConfirmButton: false,
-        //                     timer: 1500
-        //                   })
-        //             }
-        //         })
-        //     }
-        //     else{
-        //         Swal.fire({
-        //             title: 'Please Login First',
-        //             icon: 'warning',
-        //             showCancelButton: true,
-        //             confirmButtonColor: '#3085d6',
-        //             cancelButtonColor: '#d33',
-        //             confirmButtonText: 'Login Now'
-        //           }).then((result) => {
-        //             if (result.isConfirmed) {
-        //               navigate('/login', {state: {from: location}})
-        //             }
-        //           })
-        //     }
+        const handleAddToCart = (item) =>{
+            console.log(item);
         
-        // }
+            if(user && user.email){
+                const cartItem = {menuItemId: item._id, name: item.name, image: item.image, price: item.price, category: item.category, email: user.email}
+        
+                fetch(`${import.meta.env.VITE_API_URL}/carts`,{
+                  method:"POST",
+                  headers:{'content-type': 'application/json'},
+                  body: JSON.stringify(cartItem)
+              })
+                .then(res => res.json())
+                .then(data =>{
+                    if(data.insertedId){
+                    
+                      Swal.fire({
+                          position: 'top-end',
+                          icon: 'success',
+                          title: 'Cart saved',
+                          showConfirmButton: false,
+                          timer: 1500
+                        })
+                        refetch();
+                  }
+                })
+            }
+            else{
+                Swal.fire({
+                    title: 'Please Login First',
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Login Now'
+                  }).then((result) => {
+                    if (result.isConfirmed) {
+                      navigate('/login', {state: {from: location}})
+                    }
+                  })
+            }
+        
+        }
 
     return (
         <div className='container mx-auto px-4 mt-24 mb-10'>
@@ -106,7 +121,7 @@ const Menu = () => {
             <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4'>
                 {
                     visibleProducts.map((menu,i) =>(
-                            <Cards menu={menu} key={i}></Cards>
+                            <Cards handleAddToCart={handleAddToCart} menu={menu} key={i}></Cards>
                     ))
                 }
 

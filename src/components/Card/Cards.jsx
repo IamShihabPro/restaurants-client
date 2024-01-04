@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Cards = ({ menu }) => {
+const Cards = ({ menu, handleAddToCart }) => {
   const { _id, name, image, recipe, price, category } = menu;
 
   const truncateText = (text, maxLength) => {
@@ -26,7 +26,7 @@ const Cards = ({ menu }) => {
             <p className="font-semibold">${price.toFixed(2)}</p>
           </div>
         </div>
-          <button className="bg-orange-500 px-4 py-2 w-full mt-2 rounded-md text-white font-serif">
+          <button onClick={()=> handleAddToCart(menu)} className="bg-orange-500 px-4 py-2 w-full mt-2 rounded-md text-white font-serif">
             Add to cart
           </button>
       </div>
