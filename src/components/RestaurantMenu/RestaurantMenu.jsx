@@ -1,17 +1,22 @@
 // src/components/RestaurantMenu.js
 import React, { useContext, useEffect, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 import { AuthContext } from '../../Provider/AuthProvider';
 import Swal from 'sweetalert2';
+import useCart from '../../hooks/useCart';
 
 const RestaurantMenu = () => {
+  const navigate = useNavigate()
+  const location = useLocation()
+
   const [category, setCategory] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState('All');
-  const navigate = useNavigate()
-
+ 
   const {user} = useContext(AuthContext)
+  const [cart, refetch] = useCart()
+
 
   useEffect(() => {
     fetch(`${import.meta.env.VITE_API_URL}/menu`)
@@ -31,19 +36,26 @@ const RestaurantMenu = () => {
     console.log(item);
 
     if(user && user.email){
-        
-        fetch(`${import.meta.env.VITE_API_URL}/carts`)
+        const cartItem = {menuItemId: item._id, name: item.name, image: item.image, price: item.price, category: item.category, email: user.email}
+
+        fetch(`${import.meta.env.VITE_API_URL}/carts`,{
+          method:"POST",
+          headers:{'content-type': 'application/json'},
+          body: JSON.stringify(cartItem)
+      })
         .then(res => res.json())
         .then(data =>{
             if(data.insertedId){
-                Swal.fire({
-                    position: 'top-end',
-                    icon: 'success',
-                    title: 'Cart saved',
-                    showConfirmButton: false,
-                    timer: 1500
-                  })
-            }
+            
+              Swal.fire({
+                  position: 'top-end',
+                  icon: 'success',
+                  title: 'Cart saved',
+                  showConfirmButton: false,
+                  timer: 1500
+                })
+                refetch();
+          }
         })
     }
     else{
@@ -56,7 +68,7 @@ const RestaurantMenu = () => {
             confirmButtonText: 'Login Now'
           }).then((result) => {
             if (result.isConfirmed) {
-              navigate('/login')
+              navigate('/login', {state: {from: location}})
             }
           })
     }

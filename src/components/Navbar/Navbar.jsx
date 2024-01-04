@@ -4,10 +4,13 @@ import { ImSpoonKnife } from "react-icons/im";
 
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../Provider/AuthProvider';
+import useCart from '../../hooks/useCart';
 
 const Nabvbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const {user, logOut} = useContext(AuthContext)
+
+  const [cart] = useCart()
 
 
   const navItems = [
@@ -74,7 +77,7 @@ const Nabvbar = () => {
 
                 <div className='hidden md:block lg:block '>
                    <div className='flex gap-2'>
-                        <Link className='bg-orange-500 px-4 py-2 rounded-md text-white flex items-center justify-center w-24 font-medium'> Order  <FaShoppingCart className='w-14'></FaShoppingCart> </Link>
+                        <Link className='bg-orange-500 px-4 py-2 rounded-md text-white flex items-center justify-center w-24 font-medium'> Order  <FaShoppingCart className='w-14'></FaShoppingCart> <sup>{cart?.length || ''}</sup> </Link>
                         {
                             user ? <Link onClick={handleLogOut} className='bg-orange-500 px-4 py-2 rounded-md text-white flex items-center justify-center w-24 font-medium'> Logout <FaUser className='w-14'></FaUser> </Link>
                             : <Link to='/login' className='bg-orange-500 px-4 py-2 rounded-md text-white flex items-center justify-center w-24 font-medium'> Login <FaUser className='w-14'></FaUser> </Link>

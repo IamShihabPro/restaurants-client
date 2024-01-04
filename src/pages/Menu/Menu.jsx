@@ -51,6 +51,47 @@ const Menu = () => {
 
         console.log(visibleProducts);
 
+
+        // const handleAddToCart = (item) =>{
+        //     console.log(item);
+        
+        //     if(user){
+                
+        //         fetch(`${import.meta.env.VITE_API_URL}/carts`,{
+        //           method: 'POST',
+        //           headers:{'content-type': 'application/json'},
+        //           body: JSON.stringify(item)
+        //         })
+        //         .then(res => res.json())
+        //         .then(data =>{
+        //             if(data.insertedId){
+        //                 Swal.fire({
+        //                     position: 'top-end',
+        //                     icon: 'success',
+        //                     title: 'Cart saved',
+        //                     showConfirmButton: false,
+        //                     timer: 1500
+        //                   })
+        //             }
+        //         })
+        //     }
+        //     else{
+        //         Swal.fire({
+        //             title: 'Please Login First',
+        //             icon: 'warning',
+        //             showCancelButton: true,
+        //             confirmButtonColor: '#3085d6',
+        //             cancelButtonColor: '#d33',
+        //             confirmButtonText: 'Login Now'
+        //           }).then((result) => {
+        //             if (result.isConfirmed) {
+        //               navigate('/login', {state: {from: location}})
+        //             }
+        //           })
+        //     }
+        
+        // }
+
     return (
         <div className='container mx-auto px-4 mt-24 mb-10'>
              <div className='mb-8 grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-2 space-x-4 mt-20'>
