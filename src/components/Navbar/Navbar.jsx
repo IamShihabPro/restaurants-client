@@ -29,6 +29,7 @@ const Nabvbar = () => {
         link: '/contact',
         title: 'Contact'
     },
+    
 ]
 
   const toggleNavbar = () => {
@@ -60,6 +61,12 @@ const Nabvbar = () => {
                             ))
                         }
 
+                    {
+                        user &&     <Link to='/dashboard' className="text-gray-800 hover:text-orange-500 hover:scale-105 px-3 py-2 rounded-md text-lg font-serif font-bold">
+                        Dashboard
+                    </Link>
+                    }
+
 
                     </div>
                 </div>
@@ -77,9 +84,9 @@ const Nabvbar = () => {
 
                 <div className='hidden md:block lg:block '>
                    <div className='flex gap-2'>
-                        <Link className='bg-orange-500 px-4 py-2 rounded-md text-white flex items-center justify-center w-24 font-medium'> Order  <FaShoppingCart className='w-14'></FaShoppingCart> <sup>{cart?.length || ''}</sup> </Link>
+                        <Link className='bg-orange-500 px-3 py-2 rounded-md text-white flex items-center justify-center w-24 font-medium'> Order  <FaShoppingCart className='w-14'></FaShoppingCart> <sup>{cart?.length || ''}</sup> </Link>
                         {
-                            user ? <Link onClick={handleLogOut} className='bg-orange-500 px-4 py-2 rounded-md text-white flex items-center justify-center w-24 font-medium'> Logout <FaUser className='w-14'></FaUser> </Link>
+                            user ? <Link onClick={handleLogOut} className='bg-orange-500 px-3 py-2 rounded-md text-white flex items-center justify-center w-24 font-medium'> Logout <FaUser className='w-14'></FaUser> </Link>
                             : <Link to='/login' className='bg-orange-500 px-4 py-2 rounded-md text-white flex items-center justify-center w-24 font-medium'> Login <FaUser className='w-14'></FaUser> </Link>
 
 
@@ -100,8 +107,16 @@ const Nabvbar = () => {
                             </Link>
                         ))
                     }
+
+                   {
+                    user &&  <Link to='/dashboard' className="block text-gray-900 px-3 py-2 rounded-md text-base font-bold font-serif">
+                    Dashboard
+                    </Link>
+                   }
+
+
                      <div className='block md:hidden lg:hidden my-4'>
-                        <Link className='bg-orange-500 px-4 py-2 rounded-md text-white flex items-center justify-center w-28 my-2'> Order  <FaShoppingCart className='w-14'></FaShoppingCart> </Link>
+                        <Link className='bg-orange-500 px-4 py-2 rounded-md text-white flex items-center justify-center w-28 my-2'> Order  <FaShoppingCart className='w-14'></FaShoppingCart> <sup>{cart?.length || ''}</sup> </Link>
                         {
                             user ? <Link className='bg-orange-500 px-4 py-2 rounded-md text-white flex items-center justify-center w-28 my-2'> Logout <FaUser className='w-14'></FaUser> </Link>
                             : <Link to='/login' className='bg-orange-500 px-4 py-2 rounded-md text-white flex items-center justify-center w-28 my-2'> Login  <FaUser className='w-14'></FaUser> </Link>
