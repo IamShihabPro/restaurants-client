@@ -43,20 +43,20 @@ const Order = () => {
     };
 
     return (
-        <div className='container mx-auto mt-28'>
-            <h1 className='text-center font-serif font-bold text-2xl'>All Food Item</h1>
+        <div className='container mx-auto mt-16'>
+            <h1 className='text-center font-serif font-bold text-2xl mb-6'>All Food Items</h1>
 
             <div className="overflow-x-auto">
-                <table className="table">
-                    <thead>
-                        <tr>
-                            <th>Name</th>
-                            <th>Category</th>
-                            <th>Quantity</th>
-                            <th>Price</th>
+                <table className="min-w-full bg-white border border-gray-300 rounded mx-auto">
+                    <thead className="bg-gray-200">
+                        <tr className="text-center">
+                            <th className="py-2 px-4">Name</th>
+                            <th className="py-2 px-4">Category</th>
+                            <th className="py-2 px-4">Quantity</th>
+                            <th className="py-2 px-4">Price</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody className="text-center">
                         {data.map((item, i) => (
                             <Table
                                 item={item}
@@ -66,12 +66,12 @@ const Order = () => {
                             />
                         ))}
                     </tbody>
-                    <tfoot>
+                    <tfoot className="bg-gray-200">
                         <tr>
-                            <td colSpan="3" className="px-6 py-4 text-right">
-                                <strong>Total:</strong>
+                            <td colSpan="2" className="py-2 px-4 text-right font-bold">
+                                Total:
                             </td>
-                            <td colSpan="2" className="px-6 py-4 whitespace-no-wrap border-b border-gray-300">
+                            <td colSpan="2" className="py-2 px-4 border-t border-gray-300">
                                 ${calculateOverallTotal().toFixed(2)}
                             </td>
                         </tr>
