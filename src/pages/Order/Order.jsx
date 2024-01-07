@@ -52,9 +52,8 @@ const Order = () => {
                         <tr>
                             <th>Name</th>
                             <th>Category</th>
-                            <th>Price</th>
                             <th>Quantity</th>
-                            <th>Action</th>
+                            <th>Price</th>
                         </tr>
                     </thead>
                     <tbody>

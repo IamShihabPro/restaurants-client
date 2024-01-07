@@ -19,15 +19,7 @@ const Table = ({ item, handleIncreaseQuantity, handleDecreaseQuantity }) => {
                 <td>
                     {item.category}
                 </td>
-                <td>
-                    ${item.price.toFixed(2)}
-                </td>
-                <td>
-                    {item.quantity}
-                </td>
-                <td>
-                    ${item.totalPrice ? item.totalPrice.toFixed(2) : '0.00'}
-                </td>
+
                 <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-300 flex justify-center gap-4">
                     <button
                         className="bg-green-500 text-white px-4 py-2 rounded-full mr-2"
@@ -35,6 +27,7 @@ const Table = ({ item, handleIncreaseQuantity, handleDecreaseQuantity }) => {
                     >
                         +
                     </button>
+                    {item.quantity}
                     <button
                         className="bg-red-500 text-white px-4 py-2 rounded-full"
                         onClick={() => handleDecreaseQuantity(item._id)}
@@ -42,6 +35,11 @@ const Table = ({ item, handleIncreaseQuantity, handleDecreaseQuantity }) => {
                         -
                     </button>
                 </td>
+
+                <td>
+                    ${item.totalPrice ? item.totalPrice.toFixed(2) : '0.00'}
+                </td>
+               
             </tr>
         </>
     );
