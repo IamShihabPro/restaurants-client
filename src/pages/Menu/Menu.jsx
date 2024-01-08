@@ -4,6 +4,7 @@ import Swal from 'sweetalert2';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Provider/AuthProvider';
 import useCart from '../../hooks/useCart';
+import Loader from '../../components/Loader/Loader';
 
 const Menu = () => {
     const [category, setCategory] = useState([]);
@@ -13,8 +14,10 @@ const Menu = () => {
     const location = useLocation()
 
     
-  const {user} = useContext(AuthContext)
+  const {user, loading} = useContext(AuthContext)
   const [cart, refetch] = useCart()
+
+
 
     useEffect(()=>{
         fetch(`${import.meta.env.VITE_API_URL}/menu`)
@@ -105,6 +108,10 @@ const Menu = () => {
                   })
             }
         
+        }
+
+        if(loading){
+            return <Loader></Loader>
         }
 
     return (
