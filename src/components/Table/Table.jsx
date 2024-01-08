@@ -1,3 +1,4 @@
+// Table.jsx
 import React from 'react';
 
 const Table = ({ item, handleIncreaseQuantity, handleDecreaseQuantity }) => {
@@ -26,13 +27,16 @@ const Table = ({ item, handleIncreaseQuantity, handleDecreaseQuantity }) => {
                     >
                         +
                     </button>
-                    <span className="text-lg font-bold">{item.quantity}</span>
+                    <span className="text-lg font-bold">{item.quantity || 1}</span>
                     <button
                         className="bg-red-500 text-white px-4 py-2 rounded-full ml-2"
                         onClick={() => handleDecreaseQuantity(item._id)}
                     >
                         -
                     </button>
+                </td>
+                <td className="py-4 px-6">
+                    ${item.price.toFixed(2)}
                 </td>
                 <td className="py-4 px-6">
                     ${item.totalPrice ? item.totalPrice.toFixed(2) : '0.00'}
