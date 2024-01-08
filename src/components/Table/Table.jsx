@@ -2,7 +2,7 @@ import React from 'react';
 import { FaTrash } from "react-icons/fa";
 
 
-const Table = ({ item, handleIncreaseQuantity, handleDecreaseQuantity }) => {
+const Table = ({ item, handleIncreaseQuantity, handleDecreaseQuantity, handleDelete }) => {
     return (
         <>
             <tr className="text-center">
@@ -46,7 +46,7 @@ const Table = ({ item, handleIncreaseQuantity, handleDecreaseQuantity }) => {
                 </td>
 
                 <td>
-                    <button className='btn rounded-none bg-red-600 text-white btn-sm hover:bg-orange-600'> <FaTrash /> </button>
+                    <button onClick={() => handleDelete(item)} className='btn rounded-none bg-red-600 text-white btn-sm hover:bg-orange-600'> <FaTrash /> </button>
                 </td>
             </tr>
         </>

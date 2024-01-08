@@ -3,15 +3,19 @@ import React, { useContext, useEffect, useState } from 'react';
 import useCart from '../../hooks/useCart';
 import Table from '../../components/Table/Table';
 import { AuthContext } from '../../Provider/AuthProvider';
+import Loader from '../../components/Loader/Loader';
+import Swal from 'sweetalert2';
 
 const Order = () => {
-    const [cart] = useCart();
+    const [cart, refetch] = useCart();
     const [data, setData] = useState([...cart]);
 
-    const { user } = useContext(AuthContext);
+    const { user, loading } = useContext(AuthContext);
+
+   
 
     useEffect(() => {
-        setData(cart.map(item => ({
+        setData(cart?.map(item => ({
             ...item,
             quantity: 1,
             totalPrice: item.price ? item.price : 0,
@@ -50,6 +54,41 @@ const Order = () => {
         }, 0);
     };
 
+    const handleDelete = (item) => {
+        Swal.fire({
+            title: "Are you sure?",
+            text: "Remove this food item from cart",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Delete"
+          }).then((result) => {
+            if (result.isConfirmed) {
+                fetch(`${import.meta.env.VITE_API_URL}/carts/${item._id}`,{
+                    method: 'DELETE',
+                })
+                .then(res => res.json())
+                .then(data =>{
+                    if(data.deletedCount > 0){
+                        refetch()
+                        Swal.fire({
+                            title: "Deleted!",
+                            text: "Your fooditem has been deleted.",
+                            icon: "success"
+                        });
+                    }
+                })
+              
+            }
+          });
+    } 
+
+
+    if(loading){
+        return <Loader></Loader>
+    }
+
     return (
         <div className='container mx-auto mt-28 font-serif'>
             {
@@ -75,6 +114,7 @@ const Order = () => {
                                         key={i}
                                         handleIncreaseQuantity={handleIncreaseQuantity}
                                         handleDecreaseQuantity={handleDecreaseQuantity}
+                                        handleDelete={handleDelete}
                                     />
                                 ))}
                             </tbody>
