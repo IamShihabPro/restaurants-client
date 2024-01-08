@@ -94,7 +94,13 @@ const Order = () => {
             {
                 user ?
                    <>
-                   <h1 className='text-center font-bold text-2xl'>All Cart Item</h1>
+                   {
+                    cart.length < 1 ? <h1 className='text-2xl font-bold font-serif text-center mt-40 px-4'>
+                    You have not select any food item </h1>
+                    
+                    : <>
+                    
+                    <h1 className='text-center font-bold text-2xl'>All Cart Item</h1>
                    <div className="overflow-x-auto px-4 py-4">
                         <table className="min-w-full bg-white border border-gray-300 rounded mx-auto">
                             <thead className="bg-sky-500 text-white">
@@ -130,6 +136,9 @@ const Order = () => {
                             </tfoot>
                         </table>
                     </div>
+                    </>
+                   }
+                  
                    
                    </>
                     :
