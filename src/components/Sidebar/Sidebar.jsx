@@ -3,12 +3,12 @@ import { AuthContext } from '../../Provider/AuthProvider';
 import { Link } from 'react-router-dom';
 import { GoHomeFill } from "react-icons/go";
 import { IoHome } from "react-icons/io5";
-import { FaUser } from 'react-icons/fa';
+import { FaUsers } from 'react-icons/fa';
 
 
 const Sidebar = () => {
     const {user} = useContext(AuthContext)
-    console.log(user);
+    // console.log(user);
     return (
         <div className='h-screen'>
             <div className='px-4 py-7 flex flex-col items-center justify-center border-b-2 border-white'>
@@ -26,9 +26,9 @@ const Sidebar = () => {
                 Home
             </Link>
 
-            <Link to='/' className='flex items-center justify-center gap-4 px-4 py-5 text-white '>
-               <FaUser/>
-                User
+            <Link to='/dashboard/allusers' className='flex items-center justify-center gap-4 px-4 py-5 text-white '>
+               <FaUsers/>
+                All User
             </Link>
         </div>
     );

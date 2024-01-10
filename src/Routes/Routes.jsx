@@ -9,6 +9,7 @@ import Dashboard from '../Layout/Dashboard';
 import MainDash from '../pages/MainDash/MainDash';
 import Order from '../pages/Order/Order';
 import MenuDisplay from '../components/Comments/MenuDisplay';
+import AllUsers from '../pages/Dashboards/AllUsers/Allusers';
 
 export const router = createBrowserRouter([
     {
@@ -39,6 +40,7 @@ export const router = createBrowserRouter([
           path: '/display',
           element: <MenuDisplay></MenuDisplay>
         },
+        
       ]
     },
     {
@@ -48,9 +50,14 @@ export const router = createBrowserRouter([
         {
           path: 'maindash',
           element: <MainDash></MainDash>,
+        },
+        {
+          path: 'allusers',
+          element: <AllUsers></AllUsers>
         }
       ]
       
     },
+   
 ]);
 

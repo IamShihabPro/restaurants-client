@@ -142,7 +142,7 @@ const Order = () => {
                    
                    </>
                     :
-                    <h1 className='text-2xl font-bold font-serif text-center mt-40'> No order food. <br /> Please login for order food. </h1>
+                    <h1 className='text-2xl font-bold font-serif text-center mt-40'> Please login for order food. </h1>
             }
         </div>
     );

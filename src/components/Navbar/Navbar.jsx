@@ -43,6 +43,8 @@ const Nabvbar = () => {
   }
 
 
+  const isAdmin = true
+
   return (
     <nav className="bg-white fixed top-0 inset-x-0 z-50 shadow-sm">
         <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
