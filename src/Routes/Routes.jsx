@@ -10,6 +10,7 @@ import MainDash from '../pages/MainDash/MainDash';
 import Order from '../pages/Order/Order';
 import MenuDisplay from '../components/Comments/MenuDisplay';
 import AllUsers from '../pages/Dashboards/AllUsers/Allusers';
+import NewDash from '../components/NewDash/NewDash';
 
 export const router = createBrowserRouter([
     {
@@ -58,6 +59,10 @@ export const router = createBrowserRouter([
       ]
       
     },
+    {
+      path: '/newdash',
+      element: <NewDash></NewDash>
+    }
    
 ]);
 
