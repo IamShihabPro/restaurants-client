@@ -17,7 +17,7 @@ const AllUsers = () => {
                 <h1>All Users List</h1>
             </div>
 
-            <div>
+            <div className='w-full'>
                 <div className="overflow-x-auto ">
                     <table className="table table-zebra table-xs text-center">
                         {/* head */}
