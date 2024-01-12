@@ -24,7 +24,7 @@ const Sidebar = () => {
                 </div>
 
                 {/* mobile device */}
-                <div className={`fixed h-full w-screen bg-white/50 lg:hidden backdrop-blur-sm top-0 right-0 ${isOpen ? 'flex' : 'hidden'}`}>
+                <div className={`fixed h-full w-screen bg-white/50 lg:hidden backdrop-blur-sm top-0 right-0 transition duration-300 ease-in-out ${isOpen ? 'flex' : 'hidden'}`}>
                     <div className={`bg-gray-800 text-white flex flex-col absolute left-0 top-0 h-screen z-50 p-8 gap-8 w-56`}>
                      <IoClose onClick={() => setIsOpen(false)}  className='mt-0 mb-8 text-2xl cursor-pointer' />
 
@@ -34,7 +34,7 @@ const Sidebar = () => {
                     </div>
                 </div>
                 
-                {/* not mobile */}
+                {/* large */}
                 <div className='flex items-center gap-4'>
                     {/* <FaUser  className='text-2xl'/> */}
                     {/* <img src="https://images.unsplash.com/photo-1544465544-1b71aee9dfa3?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" className='w-8 h-8 rounded-full' width={40} height={40} alt="" /> */}
