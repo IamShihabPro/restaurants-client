@@ -2,7 +2,7 @@ import React from "react";
 import { MdDelete } from "react-icons/md";
 
 
-const UsersTable = ({user, i}) => {
+const UsersTable = ({user, i, handleMakeAdmin, handleDelete}) => {
 
     return (
     <>
@@ -24,11 +24,15 @@ const UsersTable = ({user, i}) => {
         <td>{user.email}</td>
 
         <th>
-          <button className="btn btn-ghost btn-xs">Make Admin</button>
+          <button onClick={() => handleMakeAdmin(user)} className="btn btn-ghost btn-xs hover:bg-transparent">  
+              {
+                user.role === 'admin' ? <h1 className="text-white bg-green-500 px-4 py-2 rounded-xl">Admin</h1> : <h1 className="text-white bg-red-500 px-4 py-2 rounded-xl">Make Admin</h1>
+              }
+          </button>
         </th>
 
         <th>
-          <button className="btn btn-sm btn-outline hover:bg-red-600 hover:border-none hover:text-white rounded-sm"> <MdDelete /> </button>
+          <button onClick={() => handleDelete(user)} className="btn btn-sm btn-outline hover:bg-red-600 hover:border-none hover:text-white rounded-sm"> <MdDelete /> </button>
         </th>
       </tr>
     </>
