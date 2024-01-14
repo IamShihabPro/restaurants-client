@@ -7,6 +7,7 @@ import {
   signOut,
 } from "firebase/auth";
 import { app } from "../firebase/firebase.config";
+import axios from "axios";
 
 const auth = getAuth(app);
 const googleProvider = new GoogleAuthProvider();
@@ -31,6 +32,18 @@ const AuthProvider = ({ children }) => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
       // console.log("currentUser", currentUser);
+
+      if(currentUser){
+        axios.post(`${import.meta.env.VITE_API_URL}/jwt`, {email: currentUser.email})
+        .then(data =>{
+          // console.log(data.data.token);
+          localStorage.setItem('access-token', data.data.token)
+        })
+      }
+      else{
+        localStorage.removeItem('access-token')
+      }
+
       setLoading(false);
     });
     return () => {
