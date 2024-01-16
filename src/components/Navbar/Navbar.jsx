@@ -1,16 +1,29 @@
-import React, {  useContext, useState } from 'react';
+import React, {  useContext, useEffect, useState } from 'react';
 import { FaBars, FaTimes, FaShoppingCart, FaUser } from 'react-icons/fa';
 import { ImSpoonKnife } from "react-icons/im";
 
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../Provider/AuthProvider';
 import useCart from '../../hooks/useCart';
+import useAdmin from '../../hooks/useAdmin';
 
 const Nabvbar = () => {
-  const [isOpen, setIsOpen] = useState(false);
   const {user, logOut} = useContext(AuthContext)
+  const [isOpen, setIsOpen] = useState(false);
+  const [refetching, setRefetching] = useState({})
+
 
   const [cart] = useCart()
+    
+  const [isAdmin, isAdminLoading, refetch] = useAdmin()
+//   console.log(isAdmin);
+
+  useEffect(()=>{
+    setRefetching(isAdmin)
+    refetch()
+  },[isAdmin])
+
+  console.log(refetching);
 
 
   const navItems = [
@@ -43,8 +56,8 @@ const Nabvbar = () => {
   }
 
 
-  const isAdmin = true
 
+  
   return (
     <nav className="bg-white fixed top-0 inset-x-0 z-50 shadow-sm">
         <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
@@ -63,11 +76,13 @@ const Nabvbar = () => {
                             ))
                         }
 
-                    {
-                        user &&     <Link to='/dashboard/maindash' className="text-gray-800 hover:text-orange-500 hover:scale-105 px-3 py-2 rounded-md text-lg font-serif font-bold">
-                        Dashboard
-                    </Link>
-                    }
+                {
+                  user && refetching?.admin == true && (
+                  <Link to='/dashboard/maindash' className="text-gray-800 hover:text-orange-500 hover:scale-105 px-3 py-2 rounded-md text-lg font-serif font-bold">
+                    Dashboard
+                  </Link>
+                    )
+                }
 
 
                     </div>

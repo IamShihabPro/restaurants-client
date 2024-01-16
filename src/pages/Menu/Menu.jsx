@@ -30,7 +30,7 @@ const Menu = () => {
     // console.log(category);
 
     let uniqueArr = [...new Set(category.map(item => item.category))]
-    console.log(uniqueArr);
+    // console.log(uniqueArr);
 
 
     const handleCategory = (c) => {
@@ -63,7 +63,7 @@ const Menu = () => {
             }
         };
 
-        console.log(visibleProducts);
+        // console.log(visibleProducts);
 
 
         

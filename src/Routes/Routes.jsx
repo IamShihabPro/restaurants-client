@@ -11,6 +11,7 @@ import Order from '../pages/Order/Order';
 import MenuDisplay from '../components/Comments/MenuDisplay';
 import AllUsers from '../pages/Dashboards/AllUsers/Allusers';
 import NewDash from '../components/NewDash/NewDash';
+import PrivateRoutes from '../PrivateRoutes/PrivateRoutes';
 
 export const router = createBrowserRouter([
     {
@@ -46,7 +47,7 @@ export const router = createBrowserRouter([
     },
     {
       path: '/dashboard',
-      element: <Dashboard></Dashboard>,
+      element: <PrivateRoutes> <Dashboard></Dashboard> </PrivateRoutes>,
       children:[
         {
           path: 'maindash',
