@@ -4,12 +4,13 @@ import { AuthContext } from '../Provider/AuthProvider'
 import useAxiosSecure from './useAxiosSecure'
 
 const useCart = (email) =>{
-    const {user} = useContext(AuthContext)
+    const {user, loading} = useContext(AuthContext)
     const token = localStorage.getItem('access-token')
     const [axiosSecure] = useAxiosSecure()
 
     const { isLoading, isError, data: cart = [], error, refetch } = useQuery({
         queryKey: ['carts', user?.email],
+        enabled: !loading,
         queryFn: async() =>{
             const res = await fetch(`${import.meta.env.VITE_API_URL}/carts?email=${user?.email}`,{
                 headers: {

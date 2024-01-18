@@ -4,10 +4,15 @@ import UsersTable from '../../../components/Table/UsersTable';
 import Swal from 'sweetalert2';
 
 const AllUsers = () => {
+    const token = localStorage.getItem('access-token')
     const { data: users = [], refetch } = useQuery({
         queryKey: ['users'],
         queryFn: async () => {
-            const res = await fetch(`${import.meta.env.VITE_API_URL}/users`);
+            const res = await fetch(`${import.meta.env.VITE_API_URL}/users`,{
+                headers: {
+                    authorization: `bearer ${token}`
+                }
+            });
             return res.json();
         },
     });
