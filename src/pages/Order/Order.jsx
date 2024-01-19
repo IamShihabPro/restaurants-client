@@ -95,7 +95,7 @@ const Order = () => {
                 user ?
                    <>
                    {
-                    cart.length < 1 ? <h1 className='text-2xl font-bold font-serif text-center mt-40 px-4'>
+                    cart?.length < 1 ? <h1 className='text-2xl font-bold font-serif text-center mt-40 px-4'>
                     You have not select any food item </h1>
                     
                     : <>
@@ -114,7 +114,7 @@ const Order = () => {
                                 </tr>
                             </thead>
                             <tbody className="text-center">
-                                {data.map((item, i) => (
+                                {data?.map((item, i) => (
                                     <Table
                                         item={item}
                                         key={i}

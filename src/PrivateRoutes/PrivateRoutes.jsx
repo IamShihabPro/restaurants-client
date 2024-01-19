@@ -14,6 +14,10 @@ const PrivateRoutes = ({children}) => {
         return <Loader></Loader>
     }
 
+    if(isAdminLoading){
+        return <Loader></Loader>
+    }
+
     if(user && isAdmin?.admin == true){
         return children
     }
