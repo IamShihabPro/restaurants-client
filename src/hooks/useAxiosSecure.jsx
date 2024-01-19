@@ -1,14 +1,15 @@
-import { useContext, useEffect } from 'react';
+import { useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import { AuthContext } from '../Provider/AuthProvider';
+import useAuth from './useAuth';
+
 
 const useAxiosSecure = () => {
-  const { logOut } = useContext(AuthContext);
-  const navigate = useNavigate();
+  const { logOut } = useAuth(); 
+  const navigate = useNavigate(); 
 
   const axiosSecure = axios.create({
-    baseURL: `${import.meta.env.VITE_API_URL}`,
+    baseURL: `${import.meta.env.VITE_API_URL}`, 
   });
 
   useEffect(() => {
@@ -17,6 +18,7 @@ const useAxiosSecure = () => {
       if (token) {
         config.headers.Authorization = `Bearer ${token}`;
       }
+      // console.log(config);
       return config;
     });
 
@@ -25,8 +27,7 @@ const useAxiosSecure = () => {
       async (error) => {
         if (error.response && (error.response.status === 401 || error.response.status === 403)) {
           await logOut();
-          // Use replace instead of push
-          navigate('/login', { replace: true });
+          navigate('/login');
         }
         return Promise.reject(error);
       }
