@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from 'react';
+import useAxiosSecure from '../../../hooks/useAxiosSecure';
+import Swal from 'sweetalert2';
 
 const AddFood = () => {
     const [category, setCategory] = useState([]);
     const [foodCategory, setFoodCategory] = useState('');
     const [customCategory, setCustomCategory] = useState("");
     const [selectedCategoryLog, setSelectedCategoryLog] = useState('');
+    const [axiosSecure] = useAxiosSecure()
 
     useEffect(() => {
         fetch(`${import.meta.env.VITE_API_URL}/menu`)
@@ -37,6 +40,22 @@ const AddFood = () => {
 
         const foodItem = { name, category: selectedCategory, price: parseFloat(price), image, recipe };
         console.log(foodItem);
+
+        axiosSecure.post('/menu',foodItem)
+        // .then(res => res.json())
+        .then(data =>{
+          console.log(data);
+          if(data.data.insertedId){
+            Swal.fire({
+              position: 'top-end',
+              icon: 'success',
+              title: 'New Food Menu Added Successfully',
+              showConfirmButton: false,
+              timer: 1500
+            })
+          }
+        })
+        
         
 
         // Reset form values
