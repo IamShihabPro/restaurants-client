@@ -13,6 +13,7 @@ import AllUsers from '../pages/Dashboards/AllUsers/Allusers';
 // import NewDash from '../components/NewDash/NewDash';
 import PrivateRoutes from '../PrivateRoutes/PrivateRoutes';
 import AddFood from '../pages/Dashboards/AddFood/AddFood';
+import AllFood from '../pages/Dashboards/AllFoods/AllFood';
 
 export const router = createBrowserRouter([
     {
@@ -61,7 +62,11 @@ export const router = createBrowserRouter([
         {
           path: 'addfood',
           element: <AddFood></AddFood>
-        }
+        },
+        {
+          path: 'allfood',
+          element: <AllFood></AllFood>
+        },
       ]
       
     },

@@ -7,6 +7,8 @@ import { FaUsers } from 'react-icons/fa';
 import { FaBars } from "react-icons/fa";
 import { IoClose } from "react-icons/io5";
 import { GiForkKnifeSpoon } from "react-icons/gi";
+import { MdFastfood } from "react-icons/md";
+
 import Loader from '../Loader/Loader';
 
 
@@ -39,6 +41,7 @@ const Sidebar = () => {
 
                         <Link to='/dashboard/maindash' className='font-bold flex items-center gap-2'> <GoHomeFill></GoHomeFill> Dashboard </Link>
                         <Link to='/dashboard/allusers' className='font-bold flex items-center gap-2'> <FaUsers/> All Users List </Link>
+                        <Link to='/dashboard/allfood' className='font-bold flex items-center gap-2'> <MdFastfood/> All Foods </Link>
                         <Link to='/dashboard/addfood' className='font-bold flex items-center gap-2'> <GiForkKnifeSpoon/> Add Food </Link>
                         <Link to='/' className='font-bold flex items-center gap-2'> <IoHome/> Home Page</Link>
                     </div>
@@ -65,6 +68,11 @@ const Sidebar = () => {
                 <Link to='/dashboard/allusers' className='flex items-center justify-center gap-4 px-4 py-5 text-white '>
                 <FaUsers/>
                     All User List
+                </Link>
+
+                <Link to='/dashboard/allfood' className='flex items-center justify-center gap-4 px-4 py-5 text-white '>
+                <MdFastfood/>
+                    All Foods
                 </Link>
 
                 <Link to='/dashboard/addfood' className='flex items-center justify-center gap-4 px-4 py-5 text-white '>
