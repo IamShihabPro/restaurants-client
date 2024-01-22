@@ -2,7 +2,7 @@ import React from 'react';
 import { MdDelete } from "react-icons/md";
 import { MdEditSquare } from "react-icons/md";
 
-const FoodTable = ({item, i}) => {
+const FoodTable = ({item, i, handleDelete}) => {
     return (
         <>
             <tr className="bg-gray-50 ">
@@ -26,7 +26,7 @@ const FoodTable = ({item, i}) => {
 
             <th className='flex justify-center items-center gap-2 mt-4'>
             <button className="btn btn-sm btn-outline hover:bg-green-600 hover:border-none hover:text-white rounded-sm"> <MdEditSquare/> </button>
-            <button className="btn btn-sm btn-outline hover:bg-red-600 hover:border-none hover:text-white rounded-sm"> <MdDelete/> </button>
+            <button onClick={() => handleDelete(item)} className="btn btn-sm btn-outline hover:bg-red-600 hover:border-none hover:text-white rounded-sm"> <MdDelete/> </button>
             </th>
         </tr>   
         </>
