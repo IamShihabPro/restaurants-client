@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
-// import Swal from 'sweetalert2';
+import useAxiosSecure from '../../../hooks/useAxiosSecure';
+import Swal from 'sweetalert2';
 
 const UpdateFood = () => {
     const food = useLoaderData()
+    const [axiosSecure] = useAxiosSecure()
     console.log(food);
 
     const [category, setCategory] = useState([]);
@@ -17,9 +19,18 @@ const UpdateFood = () => {
         fetch(`${import.meta.env.VITE_API_URL}/menu`)
             .then(res => res.json())
             .then(data => {
+                console.log(data);
                 setCategory(data);
             });
     }, []);
+
+    
+    // axiosSecure.get(`/menu`)
+    // // .then(res => res.json())
+    // .then(data =>{
+    //   console.log(data.data);
+    //   setCategory(data.data);
+    // })
 
     let uniqueArr = [...new Set(category.map(item => item.category))];
 
@@ -39,8 +50,23 @@ const UpdateFood = () => {
             selectedCategory = customCategory;
         }
 
-        const foodItem = { name, price: parseFloat(price), image, recipe };
+        const foodItem = { name, category: selectedCategory, price: parseFloat(price), image, recipe };
         console.log(foodItem);
+
+        axiosSecure.put(`/menu/${food._id}`,foodItem)
+        // .then(res => res.json())
+        .then(data =>{
+          console.log(data);
+          if(data.data.modifiedCount){
+            Swal.fire({
+              position: 'top-end',
+              icon: 'success',
+              title: 'Food Menu Updated Successfully',
+              showConfirmButton: false,
+              timer: 1500
+            })
+          }
+        })
     }
 
     return (

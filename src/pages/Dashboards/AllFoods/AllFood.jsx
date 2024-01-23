@@ -53,8 +53,8 @@ const AllFood = () => {
                             <th>#</th>
                             <th>Image</th>
                             <th>Name</th>
-                            <th>Email</th>
-                            <th>Roll</th>
+                            <th>Category</th>
+                            <th>Price</th>
                             <th>Action</th>
                         </tr>
                         </thead>
