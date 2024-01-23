@@ -6,7 +6,7 @@ import useAxiosSecure from '../../../hooks/useAxiosSecure';
 
 const AllFood = () => {
     const [menu, refetch] = useMenu()
-    console.log(menu);
+    // console.log(menu);
     const [axiosSecure] = useAxiosSecure()
 
     const handleDelete = (item) =>{

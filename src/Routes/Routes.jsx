@@ -14,6 +14,7 @@ import AllUsers from '../pages/Dashboards/AllUsers/Allusers';
 import PrivateRoutes from '../PrivateRoutes/PrivateRoutes';
 import AddFood from '../pages/Dashboards/AddFood/AddFood';
 import AllFood from '../pages/Dashboards/AllFoods/AllFood';
+import UpdateFood from '../pages/Dashboards/UpdateFood/UpdateFood';
 
 export const router = createBrowserRouter([
     {
@@ -66,6 +67,11 @@ export const router = createBrowserRouter([
         {
           path: 'allfood',
           element: <AllFood></AllFood>
+        },
+        {
+          path: 'updatefood/:id',
+          element: <UpdateFood></UpdateFood>,
+          loader: ({params})=> fetch(`${import.meta.env.VITE_API_URL}/menu/${params.id}`)
         },
       ]
       

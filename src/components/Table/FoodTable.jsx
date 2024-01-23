@@ -1,6 +1,7 @@
 import React from 'react';
 import { MdDelete } from "react-icons/md";
 import { MdEditSquare } from "react-icons/md";
+import { Link } from 'react-router-dom';
 
 const FoodTable = ({item, i, handleDelete}) => {
     return (
@@ -25,7 +26,10 @@ const FoodTable = ({item, i, handleDelete}) => {
             <td className='text-lg'>{item.price}$</td>
 
             <th className='flex justify-center items-center gap-2 mt-4'>
-            <button className="btn btn-sm btn-outline hover:bg-green-600 hover:border-none hover:text-white rounded-sm"> <MdEditSquare/> </button>
+
+            <Link to={`../updatefood/${item._id}`}>
+                <button className="btn btn-sm btn-outline hover:bg-green-600 hover:border-none hover:text-white rounded-sm"> <MdEditSquare/> </button>
+            </Link>
             <button onClick={() => handleDelete(item)} className="btn btn-sm btn-outline hover:bg-red-600 hover:border-none hover:text-white rounded-sm"> <MdDelete/> </button>
             </th>
         </tr>   
