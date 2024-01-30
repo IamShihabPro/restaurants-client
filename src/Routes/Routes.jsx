@@ -15,6 +15,7 @@ import PrivateRoutes from '../PrivateRoutes/PrivateRoutes';
 import AddFood from '../pages/Dashboards/AddFood/AddFood';
 import AllFood from '../pages/Dashboards/AllFoods/AllFood';
 import UpdateFood from '../pages/Dashboards/UpdateFood/UpdateFood';
+import Payment from '../components/Payment/Payment';
 
 export const router = createBrowserRouter([
     {
@@ -76,10 +77,10 @@ export const router = createBrowserRouter([
       ]
       
     },
-    // {
-    //   path: '/newdash',
-    //   element: <NewDash></NewDash>
-    // }
+    {
+      path: '/payment',
+      element: <Payment></Payment>
+    },
    
 ]);
 

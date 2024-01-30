@@ -23,7 +23,7 @@ const Nabvbar = () => {
     refetch()
   },[isAdmin])
 
-  console.log(refetching);
+//   console.log(refetching);
 
 
   const navItems = [

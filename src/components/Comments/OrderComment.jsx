@@ -5,7 +5,6 @@ import Table from '../../components/Table/Table';
 import { AuthContext } from '../../Provider/AuthProvider';
 import Loader from '../../components/Loader/Loader';
 import Swal from 'sweetalert2';
-// import Payments from '../../components/Payment/Payments';
 import ShippingModal from '../../components/Modal/ShippingModal';
 import PayModal from '../../components/Modal/PayModal';
 
@@ -14,7 +13,6 @@ const Order = () => {
     const [data, setData] = useState([...cart]);
 
     const { user, loading } = useContext(AuthContext);
-
     useEffect(() => {
         setData(cart?.map(item => ({
             ...item,
@@ -113,8 +111,6 @@ const Order = () => {
       setResultModalOpen(false);
     };
 
-    // console.log(resultData);
-
     if(loading){
         return <Loader></Loader>
     }
@@ -166,7 +162,7 @@ const Order = () => {
                             </tfoot>
                         </table>
                         <div className='flex justify-center items-center mt-10'>
-                            
+                           
                         <div className="">
                         <button
                             onClick={openFormModal}
@@ -176,7 +172,7 @@ const Order = () => {
                         </button>
 
                         <ShippingModal isOpen={isFormModalOpen} onClose={closeFormModal} onSubmit={openResultModal} />
-                        <PayModal data={data} isOpen={isResultModalOpen} onClose={closeResultModal} resultData={resultData} overallTotal={overallTotal} />
+                        <PayModal isOpen={isResultModalOpen} onClose={closeResultModal} resultData={resultData} overallTotal={overallTotal} />
                         </div>
 
 
