@@ -16,14 +16,11 @@ const Nabvbar = () => {
   const [cart] = useCart()
     
   const [isAdmin, isAdminLoading, refetch] = useAdmin()
-//   console.log(isAdmin);
 
   useEffect(()=>{
     setRefetching(isAdmin)
     refetch()
   },[isAdmin])
-
-//   console.log(refetching);
 
 
   const navItems = [

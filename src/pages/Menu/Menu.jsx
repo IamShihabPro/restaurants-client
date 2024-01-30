@@ -34,7 +34,7 @@ const Menu = () => {
 
 
     const handleCategory = (c) => {
-        console.log(c);
+       
         setSelectedCategory(c);
     };
 
@@ -68,7 +68,6 @@ const Menu = () => {
 
         
         const handleAddToCart = (item) =>{
-            console.log(item);
         
             if(user && user.email){
                 const cartItem = {menuItemId: item._id, name: item.name, image: item.image, price: item.price, category: item.category, email: user.email}

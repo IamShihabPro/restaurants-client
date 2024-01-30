@@ -6,7 +6,7 @@ import Swal from 'sweetalert2';
 const UpdateFood = () => {
     const food = useLoaderData()
     const [axiosSecure] = useAxiosSecure()
-    console.log(food);
+    
 
     const [category, setCategory] = useState([]);
     const [foodCategory, setFoodCategory] = useState('');
@@ -18,8 +18,7 @@ const UpdateFood = () => {
     useEffect(() => {
         fetch(`${import.meta.env.VITE_API_URL}/menu`)
             .then(res => res.json())
-            .then(data => {
-                console.log(data);
+            .then(data => {            
                 setCategory(data);
             });
     }, []);

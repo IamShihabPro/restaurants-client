@@ -16,8 +16,6 @@ const Login = () => {
   const handleGoogleLogin = () =>{
     signInWithGoogle()
     .then(res =>{   
-        console.log(res.user);
-
         const saveUser = {name: res.user.displayName, email: res.user.email, photo: res.user.photoURL }
               fetch(`${import.meta.env.VITE_API_URL}/users`,{
                 method: "POST",

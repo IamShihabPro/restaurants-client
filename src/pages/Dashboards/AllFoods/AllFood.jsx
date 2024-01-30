@@ -6,11 +6,11 @@ import useAxiosSecure from '../../../hooks/useAxiosSecure';
 
 const AllFood = () => {
     const [menu, refetch] = useMenu()
-    // console.log(menu);
+   
     const [axiosSecure] = useAxiosSecure()
 
     const handleDelete = (item) =>{
-        console.log(item);
+        
         Swal.fire({
             title: 'Are you sure?',
             text: "You won't be able to revert this!",

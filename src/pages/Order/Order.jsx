@@ -113,8 +113,6 @@ const Order = () => {
       setResultModalOpen(false);
     };
 
-    // console.log(resultData);
-
     if(loading){
         return <Loader></Loader>
     }

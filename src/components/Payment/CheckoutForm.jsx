@@ -19,8 +19,6 @@ const CheckoutForm = ({overallTotal, data, address}) => {
 
   const {user} = useAuth()
 
-  console.log(data);
-
   useEffect(() => {
     axiosSecure.post('/create-payment-intent', { overallTotal })
       .then(res => {
