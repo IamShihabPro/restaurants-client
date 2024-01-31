@@ -8,7 +8,8 @@ import Gallery from '../../components/Gallery/Gallery';
 import Footer from '../../components/Footer/Footer';
 import RestaurantMenu from '../../components/RestaurantMenu/RestaurantMenu';
 import { AuthContext } from '../../Provider/AuthProvider';
-import Loader from '../../components/Loader/Loader';
+import Loader from '../../Components/Loader/Loader';
+import ShowReview from '../Review/ShowReview';
 
 const Home = () => {
     const { user, loading } = useContext(AuthContext);
@@ -24,6 +25,7 @@ const Home = () => {
             <RestaurantMenu></RestaurantMenu>
             <InfoApp></InfoApp>
             <BookingForm></BookingForm>
+            <ShowReview></ShowReview>
             <Gallery></Gallery>
             <Footer></Footer>
         </div>

@@ -34,11 +34,11 @@ const Nabvbar = () => {
         link: '/menu',
         title: 'Menu'
     },
-    {
-        id: 3,
-        link: '/contact',
-        title: 'Contact'
-    },
+    // {
+    //     id: 3,
+    //     link: '/contact',
+    //     title: 'Contact'
+    // },
     
 ]
 

@@ -18,8 +18,8 @@ const MainDash = () => {
     })
   
     return (
-        <div className='mt-10 lg:mt-20 container mx-auto'>
-           <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 ml-10 lg:ml-36 text-white mx-4'>
+        <div className='mt-20 lg:mt-8'>
+           <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 ml-2 lg:ml-36 text-white mx-4'>
 
                 <div className="bg-red-500 shadow-md rounded overflow-hidden mx-auto my-4 w-full lg:w-48">
                     <div className="px-6 py-4">

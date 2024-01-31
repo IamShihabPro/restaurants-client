@@ -10,12 +10,10 @@ import MainDash from '../pages/MainDash/MainDash';
 import Order from '../pages/Order/Order';
 import MenuDisplay from '../components/Comments/MenuDisplay';
 import AllUsers from '../pages/Dashboards/AllUsers/Allusers';
-// import NewDash from '../components/NewDash/NewDash';
 import PrivateRoutes from '../PrivateRoutes/PrivateRoutes';
 import AddFood from '../pages/Dashboards/AddFood/AddFood';
 import AllFood from '../pages/Dashboards/AllFoods/AllFood';
 import UpdateFood from '../pages/Dashboards/UpdateFood/UpdateFood';
-import Payment from '../components/Payment/Payment';
 
 export const router = createBrowserRouter([
     {
@@ -30,10 +28,10 @@ export const router = createBrowserRouter([
           path: '/menu',
           element: <Menu></Menu>
         },
-        {
-          path: '/contact',
-          element: <Contact></Contact>
-        },
+        // {
+        //   path: '/contact',
+        //   element: <Contact></Contact>
+        // },
         {
           path: '/login',
           element: <Login></Login>
@@ -46,7 +44,6 @@ export const router = createBrowserRouter([
           path: '/display',
           element: <MenuDisplay></MenuDisplay>
         },
-        
       ]
     },
     {
@@ -77,10 +74,5 @@ export const router = createBrowserRouter([
       ]
       
     },
-    {
-      path: '/payment',
-      element: <Payment></Payment>
-    },
-   
 ]);
 
