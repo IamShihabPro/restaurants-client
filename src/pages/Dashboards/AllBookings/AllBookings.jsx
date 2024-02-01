@@ -17,7 +17,6 @@ const AllBookings = () => {
             return res.json();
         },
     });
-    console.log(bookings);
 
     const [axiosSecure] = useAxiosSecure()
 
