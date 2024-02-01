@@ -1,7 +1,60 @@
 import React from 'react';
 import table from '../../assets/infoApp/table.jpg'
+import useAuth from '../../hooks/useAuth';
+import Swal from 'sweetalert2';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const BookingForm = () => {
+  const {user} = useAuth()
+  const navigate = useNavigate()
+  const location = useLocation()
+
+  const handleBookings = (e) =>{
+    e.preventDefault()
+    const form = e.target;
+    const phone = form.phone.value;
+    const persons = form.persons.value;
+    const date = form.date.value;
+    const bookings = {phone, persons, date, name: user?.displayName, email: user?.email}
+    console.log(bookings);
+
+    if(user && user.email){
+
+      fetch(`${import.meta.env.VITE_API_URL}/bookings`,{
+        method:"POST",
+        headers:{'content-type': 'application/json'},
+        body: JSON.stringify(bookings)
+    })
+    .then(res => res.json())
+    .then(data =>{
+        if(data.insertedId){
+        
+          Swal.fire({
+              position: 'top-end',
+              icon: 'success',
+              title: 'Your Booking Saved',
+              showConfirmButton: false,
+              timer: 1500
+            })
+      }
+    })
+    }
+    else{
+      Swal.fire({
+          title: 'Please Login First',
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Login Now'
+        }).then((result) => {
+          if (result.isConfirmed) {
+            navigate('/login', {state: {from: location}})
+          }
+        })
+    }
+  }
+
   return (
     <div>
       <h1 className='text-center mx-auto text-3xl mt-10 mb-4 font-serif font-bold'>Reservation</h1>
@@ -10,7 +63,7 @@ const BookingForm = () => {
       {/* Left side: Booking Form */}
       <div className="lg:w-1/2 bg-white p-8">
         <h1 className="text-2xl font-bold mb-6  font-serif">Book A Table</h1>
-        <form>
+        <form onSubmit={handleBookings}>
           {/* Name */}
           <div className="mb-4">
             <label className="block text-gray-700 text-sm font-bold mb-2 font-serif" htmlFor="name">
@@ -19,6 +72,8 @@ const BookingForm = () => {
             <input
               className="w-full border rounded-md py-2 px-3"
               id="name"
+              name='bookingName'
+              defaultValue={user?.displayName}
               type="text"
               placeholder="Your Name"
             />
@@ -32,6 +87,8 @@ const BookingForm = () => {
             <input
               className="w-full border rounded-md py-2 px-3"
               id="email"
+              name='bookingEmail'
+              defaultValue={user?.email}
               type="email"
               placeholder="Your Email"
             />
@@ -45,6 +102,7 @@ const BookingForm = () => {
             <input
               className="w-full border rounded-md py-2 px-3"
               id="phone"
+              name='phone'
               type="tel"
               placeholder="Your Phone Number"
             />
@@ -58,6 +116,7 @@ const BookingForm = () => {
             <input
               className="w-full border rounded-md py-2 px-3"
               id="persons"
+              name='person'
               type="number"
               placeholder="Number of Persons"
             />
@@ -71,6 +130,7 @@ const BookingForm = () => {
             <input
               className="w-full border rounded-md py-2 px-3"
               id="date"
+              name='date'
               type="date"
             />
           </div>

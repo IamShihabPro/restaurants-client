@@ -14,6 +14,7 @@ import PrivateRoutes from '../PrivateRoutes/PrivateRoutes';
 import AddFood from '../pages/Dashboards/AddFood/AddFood';
 import AllFood from '../pages/Dashboards/AllFoods/AllFood';
 import UpdateFood from '../pages/Dashboards/UpdateFood/UpdateFood';
+import AllBookings from '../pages/Dashboards/AllBookings/AllBookings';
 
 export const router = createBrowserRouter([
     {
@@ -65,6 +66,10 @@ export const router = createBrowserRouter([
         {
           path: 'allfood',
           element: <AllFood></AllFood>
+        },
+        {
+          path: 'allbooking',
+          element: <AllBookings></AllBookings>
         },
         {
           path: 'updatefood/:id',
