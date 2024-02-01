@@ -5,6 +5,7 @@ import useAuth from "../../hooks/useAuth";
 import './CheckoutForm.css'
 import useCart from "../../hooks/useCart";
 import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const CheckoutForm = ({overallTotal, data, address}) => {
   const stripe = useStripe();
@@ -98,8 +99,15 @@ const CheckoutForm = ({overallTotal, data, address}) => {
        axiosSecure.post('/payments', payment)
        .then(res => {
         console.log(res.data)
-        if(res.data.result.insertedId){
-          refetch()
+        if(res.data.insertResult.insertedId){
+          Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: 'Payment Confirm',
+            showConfirmButton: false,
+            timer: 1500
+          })
+          
           navigate('/')
         }
        })
