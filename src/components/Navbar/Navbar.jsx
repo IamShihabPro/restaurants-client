@@ -123,9 +123,11 @@ const Nabvbar = () => {
                     }
 
                    {
-                    user &&  <Link to='/dashboard' className="block text-gray-900 px-3 py-2 rounded-md text-base font-bold font-serif">
+                    user && refetching?.admin == true && (
+                        <Link to='/dashboard/maindash' className="block text-gray-900 px-3 py-2 rounded-md text-base font-bold font-serif">
                     Dashboard
                     </Link>
+                    )
                    }
 
 
