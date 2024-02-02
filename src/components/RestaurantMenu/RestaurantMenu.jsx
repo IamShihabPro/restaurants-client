@@ -84,7 +84,7 @@ const RestaurantMenu = () => {
             <Tab
               key={i}
               onClick={() => setSelectedCategory(data)}
-              className={`cursor-pointer text-md bg-orange-600 text-white px-2 py-2 rounded-md font-semibold uppercase ${
+              className={`cursor-pointer text-md text-orange-600 px-2 py-2 rounded-md font-semibold uppercase ${
                 selectedCategory === data && 'border-b-2 border-blue-500'
               }`}
             >
