@@ -1,7 +1,5 @@
 import React from 'react';
 import { MdDelete } from "react-icons/md";
-import { MdEditSquare } from "react-icons/md";
-import { Link } from 'react-router-dom';
 
 const BookingTable = ({booking, i, handleDelete}) => {
     return (

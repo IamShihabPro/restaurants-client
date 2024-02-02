@@ -1,15 +1,18 @@
 import { useQuery } from '@tanstack/react-query';
 import React from 'react';
-import BookingTable from '../../../components/Table/BookingTable';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
 import Swal from 'sweetalert2';
+import ReviewTable from '../../../components/Table/ReviewTable';
+// import ReviewTable from '../../../components/Table/ReviewTable';
 
-const AllBookings = () => {
+const AllReviews = () => {
+    const [axiosSecure] = useAxiosSecure()
+
     const token = localStorage.getItem('access-token')
-    const { data: bookings = [], refetch } = useQuery({
-        queryKey: ['bookings'],
+    const { data: reviews = [], refetch } = useQuery({
+        queryKey: ['reviews'],
         queryFn: async () => {
-            const res = await fetch(`${import.meta.env.VITE_API_URL}/bookings`,{
+            const res = await fetch(`${import.meta.env.VITE_API_URL}/reviews`,{
                 headers: {
                     authorization: `bearer ${token}`
                 }
@@ -18,9 +21,7 @@ const AllBookings = () => {
         },
     });
 
-    const [axiosSecure] = useAxiosSecure()
-
-    const handleDelete = (booking) =>{
+    const handleDelete = (review) =>{
         
         Swal.fire({
             title: 'Are you sure?',
@@ -32,7 +33,7 @@ const AllBookings = () => {
             confirmButtonText: 'Confirm'
           }).then((result) => {
             if (result.isConfirmed) {
-                axiosSecure.delete(`/bookings/${booking._id}`)
+                axiosSecure.delete(`/reviews/${review._id}`)
             //   .then(res => res.json())
               .then(data =>{
                 if(data.data.deletedCount > 0){
@@ -51,7 +52,7 @@ const AllBookings = () => {
     return (
         <div className='container max-w-5xl mx-auto mt-20  lg:mt-2 px-4 font-serif'>
         <div className='text-center text-3xl font-bold mt-4 mb-8'>
-            <h1>Total Bookings {bookings?.length}</h1>
+            <h1>Total Reviews {reviews?.length}</h1>
         </div>
 
         <div className='w-full'>
@@ -63,18 +64,16 @@ const AllBookings = () => {
                         <th>#</th>
                         <th>Name</th>
                         <th>Email</th>
-                        <th>Phone</th>
-                        <th>Person</th>
-                        <th>Date</th>
+                        <th>Review</th>
                         <th>Action</th>
                     </tr>
                     </thead>
                     <tbody>
                     {
-                        bookings?.map((booking, i) =>(
-                            <BookingTable key={i} booking={booking} i={i}
+                        reviews?.map((review, i) =>(
+                            <ReviewTable key={i} review={review} i={i}
                             handleDelete={handleDelete}
-                            ></BookingTable>
+                            ></ReviewTable>
                         ))
                     }
                     </tbody>        
@@ -85,4 +84,4 @@ const AllBookings = () => {
     );
 };
 
-export default AllBookings;
+export default AllReviews;

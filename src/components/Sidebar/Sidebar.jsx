@@ -9,9 +9,9 @@ import { IoClose } from "react-icons/io5";
 import { GiForkKnifeSpoon } from "react-icons/gi";
 import { MdFastfood } from "react-icons/md";
 import { GiTabletopPlayers } from "react-icons/gi";
+import { FaCommentAlt } from "react-icons/fa";
 
 import Loader from '../Loader/Loader';
-
 
 const Sidebar = () => {
     const {user, loading} = useContext(AuthContext)
@@ -45,6 +45,7 @@ const Sidebar = () => {
                         <Link to='/dashboard/allfood' className='font-bold flex items-center gap-2'> <MdFastfood/> All Foods </Link>
                         <Link to='/dashboard/addfood' className='font-bold flex items-center gap-2'> <GiForkKnifeSpoon/> Add Food </Link>
                         <Link to='/dashboard/allbooking' className='font-bold flex items-center gap-2'> <GiTabletopPlayers/> All Booking </Link>
+                        <Link to='/dashboard/allreviews' className='font-bold flex items-center gap-2'> <FaCommentAlt/> All Reviews </Link>
                         <Link to='/' className='font-bold flex items-center gap-2'> <IoHome/> Home Page</Link>
                     </div>
                 </div>
@@ -85,6 +86,11 @@ const Sidebar = () => {
                 <Link to='/dashboard/allbooking' className='flex items-center justify-center gap-4 px-4 py-5 text-white '>
                 <GiTabletopPlayers/>
                     All Booking
+                </Link>
+
+                <Link to='/dashboard/allreviews' className='flex items-center justify-center gap-4 px-4 py-5 text-white '>
+                <FaCommentAlt/>
+                    All Reviews
                 </Link>
 
                 <Link to='/' className='flex items-center justify-center gap-4 px-4 py-5 text-white '>
