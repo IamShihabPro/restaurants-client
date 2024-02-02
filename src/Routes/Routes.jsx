@@ -16,6 +16,7 @@ import AllFood from '../pages/Dashboards/AllFoods/AllFood';
 import UpdateFood from '../pages/Dashboards/UpdateFood/UpdateFood';
 import AllBookings from '../pages/Dashboards/AllBookings/AllBookings';
 import AllReviews from '../pages/Dashboards/AllReviews/AllReviews';
+import AllPayments from '../pages/Dashboards/AllPayments/AllPayments';
 
 export const router = createBrowserRouter([
     {
@@ -75,6 +76,10 @@ export const router = createBrowserRouter([
         {
           path: 'allreviews',
           element: <AllReviews></AllReviews>
+        },
+        {
+          path: 'allpayments',
+          element: <AllPayments></AllPayments>
         },
         {
           path: 'updatefood/:id',
