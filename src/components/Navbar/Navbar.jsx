@@ -60,7 +60,7 @@ const Nabvbar = () => {
         <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
             <div className='flex items-center justify-between h-16'>
                 <div className=''>
-                    <h1 className='font-bold text-3xl font-serif flex justify-center items-center gap-2 text-orange-600'><span><ImSpoonKnife /></span> Foodie</h1>
+                   <Link to='/'> <h1 className='font-bold text-3xl font-serif flex justify-center items-center gap-2 text-orange-600'><span><ImSpoonKnife /></span> Foodie</h1> </Link>
                 </div>
 
                 <div className='hidden md:block lg:block'>
@@ -134,7 +134,7 @@ const Nabvbar = () => {
                      <div className='block md:hidden lg:hidden my-4'>
                         <Link to='/order' className='bg-orange-500 px-4 py-2 rounded-md text-white flex items-center justify-center w-28 my-2'> Order  <FaShoppingCart className='w-14'></FaShoppingCart> <sup>{cart?.length || ''}</sup> </Link>
                         {
-                            user ? <Link className='bg-orange-500 px-4 py-2 rounded-md text-white flex items-center justify-center w-28 my-2'> Logout <FaUser className='w-14'></FaUser> </Link>
+                            user ? <Link onClick={handleLogOut} className='bg-orange-500 px-4 py-2 rounded-md text-white flex items-center justify-center w-28 my-2'> Logout <FaUser className='w-14'></FaUser> </Link>
                             : <Link to='/login' className='bg-orange-500 px-4 py-2 rounded-md text-white flex items-center justify-center w-28 my-2'> Login  <FaUser className='w-14'></FaUser> </Link>
 
 
