@@ -74,6 +74,7 @@ const BookingForm = () => {
               id="name"
               name='bookingName'
               defaultValue={user?.displayName}
+              required
               type="text"
               placeholder="Your Name"
             />
@@ -88,6 +89,7 @@ const BookingForm = () => {
               className="w-full border rounded-md py-2 px-3"
               id="email"
               name='bookingEmail'
+              required
               defaultValue={user?.email}
               type="email"
               placeholder="Your Email"
@@ -103,6 +105,7 @@ const BookingForm = () => {
               className="w-full border rounded-md py-2 px-3"
               id="phone"
               name='phone'
+              required
               type="tel"
               placeholder="Your Phone Number"
             />
@@ -116,6 +119,7 @@ const BookingForm = () => {
             <input
               className="w-full border rounded-md py-2 px-3"
               id="persons"
+              required
               name='person'
               type="number"
               placeholder="Number of Persons"
@@ -130,6 +134,7 @@ const BookingForm = () => {
             <input
               className="w-full border rounded-md py-2 px-3"
               id="date"
+              required
               name='date'
               type="date"
             />
